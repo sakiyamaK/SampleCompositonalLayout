@@ -1,0 +1,9 @@
+MVC_COLLECTION:
+  Target: SampleCompositonalLayout
+  TemplateDirectoryPath: ./templates/PuiTemplate/ios/MVC_COLLECTION
+  GenerateRootPath: ./SampleCompositonalLayout
+
+MVC:
+  Target: SampleCompositonalLayout
+  TemplateDirectoryPath: ./templates/PuiTemplate/ios/MVC
+  GenerateRootPath: ./SampleCompositonalLayout

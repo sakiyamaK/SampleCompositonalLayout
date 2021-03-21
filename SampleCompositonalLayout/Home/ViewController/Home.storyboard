@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wOa-SI-twv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="ctg-4H-50b">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="wOa-SI-twv" customClass="HomeViewController" customModule="SampleCompositonalLayout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UiU-xH-lu7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Z15-Zu-Ad4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIj-aS-meI">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
+                                        <state key="normal" title="01"/>
+                                        <connections>
+                                            <action selector="tapButton01:" destination="wOa-SI-twv" eventType="touchUpInside" id="D1L-hx-IPa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msS-up-dC7">
+                                        <rect key="frame" x="0.0" y="409" width="414" height="409"/>
+                                        <state key="normal" title="02"/>
+                                        <connections>
+                                            <action selector="tapButton02:" destination="wOa-SI-twv" eventType="touchUpInside" id="vpL-SX-DvN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Djs-L7-zNm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Djs-L7-zNm" firstAttribute="bottom" secondItem="Z15-Zu-Ad4" secondAttribute="bottom" id="AKd-Ke-hNc"/>
+                            <constraint firstItem="Z15-Zu-Ad4" firstAttribute="top" secondItem="Djs-L7-zNm" secondAttribute="top" id="EsC-kL-u3S"/>
+                            <constraint firstItem="Djs-L7-zNm" firstAttribute="trailing" secondItem="Z15-Zu-Ad4" secondAttribute="trailing" id="aLf-zs-Xj2"/>
+                            <constraint firstItem="Z15-Zu-Ad4" firstAttribute="leading" secondItem="Djs-L7-zNm" secondAttribute="leading" id="kG2-A8-B55"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v9V-zt-kb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13" y="179"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
