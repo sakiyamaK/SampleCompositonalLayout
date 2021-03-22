@@ -55,13 +55,22 @@ targets:
         optional: true
     preBuildScripts:
         - path: /bin/sh
-          name: Run Script(SwiftLint.swift)
+          name: Run Script(Swiftformat)
+          script: |
+            if which mint >/dev/null; then
+              git diff --name-only | grep .swift | while read filename; do
+                mint run swiftformat "$filename" --swiftversion 5
+              done
+            else
+              echo "warning: Mintがインストールされていません。こちらからダウンロードしてください https://github.com/yonaskolb/Mint"
+            fi
+        - path: /bin/sh
+          name: Run Script(SwiftLint)
           script: |
             if which swiftlint >/dev/null; then
-              swiftlint autocorrect --format
               swiftlint
             else
-              echo "SwiftLint does not exist, download from https://github.com/realm/SwiftLint"
+              echo "warning: Mintがインストールされていません。こちらからダウンロードしてください https://github.com/yonaskolb/Mint"
             fi
         - path: /bin/sh
           name: Run Script(R.swift)

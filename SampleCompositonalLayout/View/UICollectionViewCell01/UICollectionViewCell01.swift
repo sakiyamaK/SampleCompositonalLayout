@@ -8,10 +8,9 @@
 import UIKit
 
 final class UICollectionViewCell01: UICollectionViewCell {
+  @IBOutlet private var textLabel: UILabel!
 
-    @IBOutlet private weak var textLabel: UILabel!
-
-    func configure(sample: SampleModel01) {
-        textLabel.text = sample.text
-    }
+  func configure(sample: SampleModel01) {
+    textLabel.text = sample.text
+  }
 }

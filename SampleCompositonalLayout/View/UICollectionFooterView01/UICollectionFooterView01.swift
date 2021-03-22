@@ -8,11 +8,10 @@
 import UIKit
 
 final class UICollectionFooterView01: UICollectionReusableView {
+  @IBOutlet private var contentView: UIView!
+  @IBOutlet private var textLabel: UILabel!
 
-    @IBOutlet private weak var contentView: UIView!
-    @IBOutlet private weak var textLabel: UILabel!
-
-    func configure(indexPath: IndexPath) {
-        textLabel.text = "section footer : " + indexPath.section.description
-    }
+  func configure(indexPath: IndexPath) {
+    textLabel.text = "section footer : " + indexPath.section.description
+  }
 }
