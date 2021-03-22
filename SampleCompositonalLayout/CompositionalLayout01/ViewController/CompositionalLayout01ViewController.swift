@@ -23,12 +23,20 @@ final class CompositionalLayout01ViewController: UIViewController {
 
 private extension CompositionalLayout01ViewController {
     var layout: UICollectionViewLayout {
+      //アイテム(セル)の大きさをグループの大きさと同じにする
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+      //アイテム設定に大きさを登録してインスタンスを作る
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+      //グループサイズの横幅をコレクションビューの横幅と同じ、高さを44にる
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+      //グループの水平設定に大きさとアイテムの種類を登録する
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+      //セクションにグループを登録する
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 10
+      
+      //レイアウトにセクションを登録する
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }

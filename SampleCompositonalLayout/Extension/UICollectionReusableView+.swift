@@ -7,6 +7,6 @@
 
 import UIKit
 
-extension UICollectionViewCell {
+extension UICollectionReusableView {
     static var reuseId: String { String(describing: Self.self) }
 }
