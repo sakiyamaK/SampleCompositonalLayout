@@ -6,6 +6,7 @@ setup:
 
 clean:
 	./script/clean.sh
+.PHONY: clean
 
 component:
 ifdef name
@@ -14,4 +15,4 @@ else
 	@echo "make component name=<component name>"
 endif
 .PHONY: component
-.PHONY: clean
+

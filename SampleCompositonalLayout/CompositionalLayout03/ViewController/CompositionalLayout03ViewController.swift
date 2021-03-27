@@ -25,55 +25,48 @@ final class CompositionalLayout03ViewController: UIViewController {
 
 private extension CompositionalLayout03ViewController {
   var layout: UICollectionViewLayout {
-    // アイテムの横幅をグループの0.2倍、高さを1倍にする
-    let itemSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(0.2),
-      heightDimension: .fractionalHeight(1.0)
-    )
-    let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-    let groupSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(1.0),
-      heightDimension: .absolute(44)
-    )
-    let group = NSCollectionLayoutGroup.horizontal(
-      layoutSize: groupSize,
-      subitems: [item]
-    )
-    // アイテム間の余白を最小で5にする
-    group.interItemSpacing = .flexible(5)
-    // グループの左右に10の余白を入れる
-    group.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
+    let leftFractional: CGFloat = 0.7
+    let rightFractional: CGFloat = 1.0 - leftFractional
+    // 左側のアイテム
+    let leadingItem = NSCollectionLayoutItem(
+      // グループに対する比率
+      layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(leftFractional),
+                                         heightDimension: .fractionalHeight(1.0)))
+    // 余白
+    leadingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
 
-    let section = NSCollectionLayoutSection(group: group)
-    section.interGroupSpacing = 30
-    section.contentInsets = .init(top: 20, leading: 0, bottom: 20, trailing: 0)
+    let trailingItem = NSCollectionLayoutItem(
+      // グループに対する比率
+      layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                         heightDimension: .fractionalHeight(0.5)))
+    // 余白
+    trailingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
 
-    /*
-     header footerの設定
-     */
-    // フッタのためにサイズを用意
-    let footerHeaderSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(1.0),
-      heightDimension: .absolute(50.0)
-    )
-    // ヘッダ
-    let header = NSCollectionLayoutBoundarySupplementaryItem(
-      layoutSize: footerHeaderSize,
-      elementKind: UICollectionView.elementKindSectionHeader,
-      alignment: .top
-    )
-    // フッタ
-    let footer = NSCollectionLayoutBoundarySupplementaryItem(
-      layoutSize: footerHeaderSize,
-      elementKind: UICollectionView.elementKindSectionFooter,
-      alignment: .bottom
+    // 右側のアイテムグループ　縦並びにするからvertical
+    let trailingGroup = NSCollectionLayoutGroup.vertical(
+      layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(rightFractional),
+                                         heightDimension: .fractionalHeight(1.0)),
+      //同じitemを2回繰り返す時はこんな感じ
+      subitem: trailingItem,
+      count: 2
+      //こうでも同じitemを2回繰り返せる
+//      subitems: [trailingItem, trailingItem]
     )
 
-    // セクションに登録
-    section.boundarySupplementaryItems = [header, footer]
+    // sectionに入れる大元となるグループ
+    let nestedGroup = NSCollectionLayoutGroup.horizontal(
+      // colelctionviewに対する比率
+      layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                         heightDimension: .fractionalHeight(0.4)),
+      // 右側はネストされたグループを入れる
+      subitems: [leadingItem, trailingGroup]
+    )
+
+    let section = NSCollectionLayoutSection(group: nestedGroup)
 
     let layout = UICollectionViewCompositionalLayout(section: section)
+
     return layout
   }
 }
