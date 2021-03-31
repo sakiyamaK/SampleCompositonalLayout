@@ -9,7 +9,7 @@ import IBPCollectionViewCompositionalLayout
 import UIKit
 
 final class CompositionalLayout01ViewController: UIViewController {
-  private let items = SampleModel01.smaple01s
+  private let items = SampleModel01.samples
 
   @IBOutlet private var collectionView: UICollectionView! {
     didSet {

@@ -8,7 +8,7 @@
 import UIKit
 
 final class CompositionalLayout03ViewController: UIViewController {
-  private let itemss = SampleModel01.smaple01ss
+  private let itemss = SampleModel01.sampless
 
   @IBOutlet private var collectionView: UICollectionView! {
     didSet {
@@ -25,21 +25,22 @@ final class CompositionalLayout03ViewController: UIViewController {
 
 private extension CompositionalLayout03ViewController {
   var layout: UICollectionViewLayout {
-
     let leftFractional: CGFloat = 0.7
     let rightFractional: CGFloat = 1.0 - leftFractional
     // 左側のアイテム
     let leadingItem = NSCollectionLayoutItem(
       // グループに対する比率
       layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(leftFractional),
-                                         heightDimension: .fractionalHeight(1.0)))
+                                         heightDimension: .fractionalHeight(1.0))
+    )
     // 余白
     leadingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
 
     let trailingItem = NSCollectionLayoutItem(
       // グループに対する比率
       layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                         heightDimension: .fractionalHeight(0.5)))
+                                         heightDimension: .fractionalHeight(0.5))
+    )
     // 余白
     trailingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
 
@@ -47,10 +48,10 @@ private extension CompositionalLayout03ViewController {
     let trailingGroup = NSCollectionLayoutGroup.vertical(
       layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(rightFractional),
                                          heightDimension: .fractionalHeight(1.0)),
-      //同じitemを2回繰り返す時はこんな感じ
+      // 同じitemを2回繰り返す時はこんな感じ
       subitem: trailingItem,
       count: 2
-      //こうでも同じitemを2回繰り返せる
+      // こうでも同じitemを2回繰り返せる
 //      subitems: [trailingItem, trailingItem]
     )
 

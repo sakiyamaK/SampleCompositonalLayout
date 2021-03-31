@@ -44,6 +44,21 @@ final class Router {
     let vc = R.storyboard.compositionalLayout03.compositionalLayout03ViewController()!
     show(from: from, to: vc)
   }
+
+  func showCompositionalLayout04(from: UIViewController) {
+    let vc = R.storyboard.compositionalLayout04.compositionalLayout04ViewController()!
+    show(from: from, to: vc)
+  }
+
+  func showCompositionalLayout05(from: UIViewController) {
+    let vc = R.storyboard.compositionalLayout05.compositionalLayout05ViewController()!
+    show(from: from, to: vc)
+  }
+
+  func showCompositionalLayout06(from: UIViewController) {
+    let vc = R.storyboard.compositionalLayout06.compositionalLayout06ViewController()!
+    show(from: from, to: vc)
+  }
 }
 
 private extension Router {

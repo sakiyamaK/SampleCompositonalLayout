@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LDd-AN-zoh">
-                        <rect key="frame" x="0.0" y="0.0" width="219" height="20.5"/>
+                        <rect key="frame" x="8" y="8" width="203" height="20.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oV-jY-dhD">
-                                <rect key="frame" x="0.0" y="0.0" width="219" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="203" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -31,10 +31,10 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="LDd-AN-zoh" firstAttribute="top" secondItem="yMC-09-6YW" secondAttribute="top" id="NuC-Ip-bv8"/>
-                    <constraint firstAttribute="trailing" secondItem="LDd-AN-zoh" secondAttribute="trailing" id="T8E-3e-pQw"/>
-                    <constraint firstAttribute="bottom" secondItem="LDd-AN-zoh" secondAttribute="bottom" priority="750" id="eH8-mG-ico"/>
-                    <constraint firstItem="LDd-AN-zoh" firstAttribute="leading" secondItem="yMC-09-6YW" secondAttribute="leading" id="zYs-Wg-mEQ"/>
+                    <constraint firstItem="LDd-AN-zoh" firstAttribute="top" secondItem="yMC-09-6YW" secondAttribute="top" constant="8" id="NuC-Ip-bv8"/>
+                    <constraint firstAttribute="trailing" secondItem="LDd-AN-zoh" secondAttribute="trailing" constant="8" id="T8E-3e-pQw"/>
+                    <constraint firstAttribute="bottom" secondItem="LDd-AN-zoh" secondAttribute="bottom" priority="750" constant="8" id="eH8-mG-ico"/>
+                    <constraint firstItem="LDd-AN-zoh" firstAttribute="leading" secondItem="yMC-09-6YW" secondAttribute="leading" constant="8" id="zYs-Wg-mEQ"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="219" height="228"/>

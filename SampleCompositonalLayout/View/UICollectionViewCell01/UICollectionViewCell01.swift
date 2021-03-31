@@ -10,7 +10,25 @@ import UIKit
 final class UICollectionViewCell01: UICollectionViewCell {
   @IBOutlet private var textLabel: UILabel!
 
-  func configure(sample: SampleModel01) {
+  var cornerRadius: CGFloat = 0 {
+    didSet {
+      contentView.layer.cornerRadius = cornerRadius
+    }
+  }
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    contentView.clipsToBounds = true
+    contentView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
+  }
+
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    textLabel.text = nil
+  }
+
+  func configure(sample: SampleModel01, cornerRadius: CGFloat = 0) {
     textLabel.text = sample.text
+    self.cornerRadius = cornerRadius
   }
 }

@@ -11,7 +11,16 @@ final class UICollectionHeaderView01: UICollectionReusableView {
   @IBOutlet private var contentView: UIView!
   @IBOutlet private var textLabel: UILabel!
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    textLabel.text = nil
+  }
+
   func configure(indexPath: IndexPath) {
     textLabel.text = "section header : " + indexPath.section.description
+  }
+
+  func configure(text: String) {
+    textLabel.text = text
   }
 }

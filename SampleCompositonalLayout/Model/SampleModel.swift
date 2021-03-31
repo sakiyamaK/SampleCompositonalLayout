@@ -10,17 +10,27 @@ import Foundation
 struct SampleModel01 {
   var text: String
 
-  static var smaple01s: [SampleModel01] {
-    Array(0 ... 100).map {
+  private static func createSamples(times: Int) -> [Self] {
+    Array(0 ... times).map {
       SampleModel01(text: $0.description + " desuyo")
     }
   }
 
-  static var smaple01ss: [[SampleModel01]] {
-    Array(0 ... 50).map { _ -> [SampleModel01] in
-      Array(0 ... 20).map {
-        SampleModel01(text: $0.description + " desuyo")
-      }
+  private static func createSampless(times0: Int, times1 _: Int) -> [[Self]] {
+    Array(0 ... times0).map { _ -> [SampleModel01] in
+      SampleModel01.createSamples(times: 1)
     }
+  }
+
+  static var samples: [Self] {
+    SampleModel01.createSamples(times: 100)
+  }
+
+  static var sampless: [[Self]] {
+    createSampless(times0: 50, times1: 20)
+  }
+
+  static var smaple02ss: [[Self]] {
+    [SampleModel01.createSamples(times: 5), SampleModel01.createSamples(times: 10), SampleModel01.createSamples(times: 20)]
   }
 }

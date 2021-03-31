@@ -8,7 +8,7 @@
 import UIKit
 
 final class CompositionalLayout02ViewController: UIViewController {
-  private let itemss = SampleModel01.smaple01ss
+  private let itemss = SampleModel01.sampless
 
   @IBOutlet private var collectionView: UICollectionView! {
     didSet {
