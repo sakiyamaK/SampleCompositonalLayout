@@ -8,12 +8,13 @@
 import UIKit
 
 final class SectionBackgroundDecorationView: UICollectionReusableView {
-
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
   }
-  required init?(coder: NSCoder) {
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) {
     fatalError("not implemented")
   }
 }
@@ -28,7 +29,6 @@ extension SectionBackgroundDecorationView {
 }
 
 final class CompositionalLayout06ViewController: UIViewController {
-
   private let items = SampleModel01.samples
 
   @IBOutlet private var collectionView: UICollectionView! {
@@ -53,7 +53,7 @@ private extension CompositionalLayout06ViewController {
                                            heightDimension: .fractionalHeight(1.0)))
       leadingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
 
-      //NSCollectionLayoutGroupのsubitems,countだとheightDimensionの値は関係ないらしい
+      // NSCollectionLayoutGroupのsubitems,countだとheightDimensionの値は関係ないらしい
       let trailingItem = NSCollectionLayoutItem(
         layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                            heightDimension: .fractionalHeight(1.0)))
@@ -62,18 +62,21 @@ private extension CompositionalLayout06ViewController {
       let trailingGroup = NSCollectionLayoutGroup.vertical(
         layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(rightFractional),
                                            heightDimension: .fractionalHeight(1.0)),
-        subitem: trailingItem, count: 2)
+        subitem: trailingItem, count: 2
+      )
 
       let containerGroup = NSCollectionLayoutGroup.horizontal(
         layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85),
                                            heightDimension: .fractionalHeight(0.4)),
-        subitems: [leadingItem, trailingGroup])
+        subitems: [leadingItem, trailingGroup]
+      )
 
       let section = NSCollectionLayoutSection(group: containerGroup)
       section.orthogonalScrollingBehavior = .continuous
       section.interGroupSpacing = 5
       section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
 
+      // sectionの背景をデコレーション
       let decorationItem: NSCollectionLayoutDecorationItem = .background(elementKind: SectionBackgroundDecorationView.reuseId)
       decorationItem.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
 
@@ -89,7 +92,7 @@ private extension CompositionalLayout06ViewController {
 extension CompositionalLayout06ViewController: UICollectionViewDelegate {}
 
 extension CompositionalLayout06ViewController: UICollectionViewDataSource {
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
+  func numberOfSections(in _: UICollectionView) -> Int {
     return 10
   }
 
@@ -102,5 +105,4 @@ extension CompositionalLayout06ViewController: UICollectionViewDataSource {
     cell.configure(sample: items[indexPath.item], cornerRadius: 8)
     return cell
   }
-
 }

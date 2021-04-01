@@ -22,8 +22,39 @@ struct SampleModel01 {
     }
   }
 
+  static var samples: [Self] { Self.createSamples(times: 100) }
+  static var sampless: [[Self]] { createSampless(times0: 50, times1: 20) }
+  static var smaple02ss: [[Self]] {
+    [Self.createSamples(times: 5), Self.createSamples(times: 10), Self.createSamples(times: 20)]
+  }
+}
+
+struct SampleModel02: Hashable {
+  var text: String
+
+  let identifier = UUID()
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(identifier)
+  }
+
+  static func == (lhs: Self, rhs: Self) -> Bool {
+    return lhs.identifier == rhs.identifier
+  }
+
+  private static func createSamples(times: Int) -> [Self] {
+    Array(0 ... times).map {
+      Self(text: $0.description + " desuyo")
+    }
+  }
+
+  private static func createSampless(times0: Int, times1 _: Int) -> [[Self]] {
+    Array(0 ... times0).map { _ -> [Self] in
+      Self.createSamples(times: 1)
+    }
+  }
+
   static var samples: [Self] {
-    SampleModel01.createSamples(times: 100)
+    Self.createSamples(times: 100)
   }
 
   static var sampless: [[Self]] {
@@ -31,6 +62,6 @@ struct SampleModel01 {
   }
 
   static var smaple02ss: [[Self]] {
-    [SampleModel01.createSamples(times: 5), SampleModel01.createSamples(times: 10), SampleModel01.createSamples(times: 20)]
+    [Self.createSamples(times: 5), Self.createSamples(times: 10), Self.createSamples(times: 20)]
   }
 }

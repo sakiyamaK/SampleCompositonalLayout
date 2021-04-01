@@ -5,6 +5,7 @@
 //  Created by  on 2021/3/21.
 //
 
+import IBPCollectionViewCompositionalLayout
 import UIKit
 
 final class CompositionalLayout02ViewController: UIViewController {

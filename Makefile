@@ -1,7 +1,6 @@
 setup:
 	./script/setup.sh
 	open SampleCompositonalLayout.xcworkspace
-
 .PHONY: setup
 
 clean:

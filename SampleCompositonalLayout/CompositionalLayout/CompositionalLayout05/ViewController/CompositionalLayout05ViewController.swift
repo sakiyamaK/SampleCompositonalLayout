@@ -8,11 +8,11 @@
 import UIKit
 
 final class CompositionalLayout05ViewController: UIViewController {
-
   private let items = SampleModel01.samples
 
   enum SectionKind: Int, CaseIterable {
     case continuous, groupPaging, none, continuousGroupLeadingBoundary, paging, groupPagingCentered
+
     var orthogonalScrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior {
       switch self {
       case .none:
@@ -53,7 +53,7 @@ private extension CompositionalLayout05ViewController {
                                            heightDimension: .fractionalHeight(1.0)))
       leadingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
 
-      //NSCollectionLayoutGroupのsubitems,countだとheightDimensionの値は関係ないらしい
+      // NSCollectionLayoutGroupのsubitems,countだとheightDimensionの値は関係ないらしい
       let trailingItem = NSCollectionLayoutItem(
         layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                            heightDimension: .fractionalHeight(1.0)))
@@ -62,20 +62,23 @@ private extension CompositionalLayout05ViewController {
       let trailingGroup = NSCollectionLayoutGroup.vertical(
         layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(rightFractional),
                                            heightDimension: .fractionalHeight(1.0)),
-        subitem: trailingItem, count: 2)
+        subitem: trailingItem, count: 2
+      )
 
-      //横幅0.85にして横スクロールできることが分かるように次のグループをチラ見せしてる
-      //縦幅0.4にして縦スクロールできることが分かるように次のセクションをチラ見せしてる
+      // 横幅0.85にして横スクロールできることが分かるように次のグループをチラ見せしてる
+      // 縦幅0.4にして縦スクロールできることが分かるように次のセクションをチラ見せしてる
       let containerGroup = NSCollectionLayoutGroup.horizontal(
         layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85),
                                            heightDimension: .fractionalHeight(0.4)),
-        subitems: [leadingItem, trailingGroup])
+        subitems: [leadingItem, trailingGroup]
+      )
 
       let section = NSCollectionLayoutSection(group: containerGroup)
-      //横スクロールの設定
+      // 横スクロールの設定
       let sectionKind = SectionKind(rawValue: sectionIndex)!
       section.orthogonalScrollingBehavior = sectionKind.orthogonalScrollingBehavior
 
+      // header
       let header = NSCollectionLayoutBoundarySupplementaryItem(
         layoutSize: .init(widthDimension: .fractionalWidth(1.0),
                           heightDimension: .absolute(20)),
@@ -86,7 +89,6 @@ private extension CompositionalLayout05ViewController {
       section.boundarySupplementaryItems = [header]
 
       return section
-
     }
   }
 }
@@ -98,7 +100,7 @@ extension CompositionalLayout05ViewController: UICollectionViewDataSource {
     SectionKind.allCases.count
   }
 
-  func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
     items.count
   }
 

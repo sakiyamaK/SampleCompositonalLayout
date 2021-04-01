@@ -8,7 +8,7 @@ name: SampleCompositonalLayout
 options:
   bundleIdPrefix: com.sakiyamaK
   deploymentTarget:
-    iOS: 13.0
+    iOS: 12.4
 packages:
   IQKeyboardManagerSwift:
       url: https://github.com/hackiftekhar/IQKeyboardManager
@@ -19,6 +19,9 @@ packages:
   IBPCollectionViewCompositionalLayout:
       url: https://github.com/kishikawakatsumi/IBPCollectionViewCompositionalLayout
       from: 0.6.9
+  DiffableDataSources:
+      url: https://github.com/ra1028/DiffableDataSources
+      from: 0.4.0
 configs:
   Debug: debug
   Release: release
@@ -49,6 +52,7 @@ targets:
         - package: IQKeyboardManagerSwift
         - package: SnapKit
         - package: IBPCollectionViewCompositionalLayout
+        - package: DiffableDataSources
     sources:
       - path: SampleCompositonalLayout/
       - path: R.generated.swift
