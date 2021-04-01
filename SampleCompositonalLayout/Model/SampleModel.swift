@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct SampleModel01 {
+protocol SampleModel {
+  var text: String { get }
+}
+
+struct SampleModel01: SampleModel {
   var text: String
 
   private static func createSamples(times: Int) -> [Self] {
@@ -29,7 +33,7 @@ struct SampleModel01 {
   }
 }
 
-struct SampleModel02: Hashable {
+struct SampleModel02: SampleModel, Hashable {
   var text: String
 
   let identifier = UUID()

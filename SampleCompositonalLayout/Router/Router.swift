@@ -59,6 +59,11 @@ final class Router {
     let vc = R.storyboard.compositionalLayout06.compositionalLayout06ViewController()!
     show(from: from, to: vc)
   }
+
+  func showDiffableDataSources01(from: UIViewController) {
+    let vc = R.storyboard.diffableDataSources01.diffableDataSources01ViewController()!
+    show(from: from, to: vc)
+  }
 }
 
 private extension Router {

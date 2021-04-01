@@ -13,7 +13,7 @@
         <scene sceneID="ctg-4H-50b">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="wOa-SI-twv" customClass="HomeViewController" customModule="SampleCompositonalLayout" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UiU-xH-lu7">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="UiU-xH-lu7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -21,45 +21,53 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIj-aS-meI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="136.5"/>
-                                        <state key="normal" title="01"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
+                                        <state key="normal" title="CompositionalLayout01"/>
                                         <connections>
-                                            <action selector="tapButton01:" destination="wOa-SI-twv" eventType="touchUpInside" id="D1L-hx-IPa"/>
+                                            <action selector="tapCL01:" destination="wOa-SI-twv" eventType="touchUpInside" id="D1L-hx-IPa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msS-up-dC7">
-                                        <rect key="frame" x="0.0" y="136.5" width="414" height="136"/>
-                                        <state key="normal" title="02"/>
+                                        <rect key="frame" x="0.0" y="117" width="414" height="116.5"/>
+                                        <state key="normal" title="CompositionalLayout02"/>
                                         <connections>
-                                            <action selector="tapButton02:" destination="wOa-SI-twv" eventType="touchUpInside" id="vpL-SX-DvN"/>
+                                            <action selector="tapCL02:" destination="wOa-SI-twv" eventType="touchUpInside" id="vpL-SX-DvN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bt1-so-kJN">
-                                        <rect key="frame" x="0.0" y="272.5" width="414" height="136.5"/>
-                                        <state key="normal" title="03"/>
+                                        <rect key="frame" x="0.0" y="233.5" width="414" height="117"/>
+                                        <state key="normal" title="CompositionalLayout03"/>
                                         <connections>
-                                            <action selector="tapButton3:" destination="wOa-SI-twv" eventType="touchUpInside" id="Q2L-dp-Qtb"/>
+                                            <action selector="tapCL3:" destination="wOa-SI-twv" eventType="touchUpInside" id="Q2L-dp-Qtb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0np-ma-J9r">
-                                        <rect key="frame" x="0.0" y="409" width="414" height="136.5"/>
-                                        <state key="normal" title="04"/>
+                                        <rect key="frame" x="0.0" y="350.5" width="414" height="117"/>
+                                        <state key="normal" title="CompositionalLayout04"/>
                                         <connections>
-                                            <action selector="tapButton04:" destination="wOa-SI-twv" eventType="touchUpInside" id="UOK-q6-sjc"/>
+                                            <action selector="tapCL04:" destination="wOa-SI-twv" eventType="touchUpInside" id="UOK-q6-sjc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPS-jm-EXK">
-                                        <rect key="frame" x="0.0" y="545.5" width="414" height="136"/>
-                                        <state key="normal" title="05"/>
+                                        <rect key="frame" x="0.0" y="467.5" width="414" height="116.5"/>
+                                        <state key="normal" title="CompositionalLayout05"/>
                                         <connections>
-                                            <action selector="tapButton05:" destination="wOa-SI-twv" eventType="touchUpInside" id="NOR-Pr-Acb"/>
+                                            <action selector="tapCL05:" destination="wOa-SI-twv" eventType="touchUpInside" id="NOR-Pr-Acb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPd-2U-giU">
-                                        <rect key="frame" x="0.0" y="681.5" width="414" height="136.5"/>
-                                        <state key="normal" title="06"/>
+                                        <rect key="frame" x="0.0" y="584" width="414" height="117"/>
+                                        <state key="normal" title="CompositionalLayout06"/>
                                         <connections>
-                                            <action selector="tapButton06:" destination="wOa-SI-twv" eventType="touchUpInside" id="ERW-tF-CCB"/>
+                                            <action selector="tapCL06:" destination="wOa-SI-twv" eventType="touchUpInside" id="ERW-tF-CCB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="vS6-Hz-qso">
+                                        <rect key="frame" x="0.0" y="701" width="414" height="117"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="DiffarableDatasources01"/>
+                                        <connections>
+                                            <action selector="tapDD01:" destination="wOa-SI-twv" eventType="touchUpInside" id="auu-5N-oGh"/>
                                         </connections>
                                     </button>
                                 </subviews>

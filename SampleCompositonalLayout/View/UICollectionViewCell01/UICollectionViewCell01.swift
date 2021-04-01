@@ -27,7 +27,7 @@ final class UICollectionViewCell01: UICollectionViewCell {
     textLabel.text = nil
   }
 
-  func configure(sample: SampleModel01, cornerRadius: CGFloat = 0) {
+  func configure(sample: SampleModel, cornerRadius: CGFloat = 0) {
     textLabel.text = sample.text
     self.cornerRadius = cornerRadius
   }
