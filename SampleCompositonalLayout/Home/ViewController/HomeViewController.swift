@@ -35,4 +35,8 @@ final class HomeViewController: UIViewController {
   @IBAction func tapDD01(_: Any) {
     Router.shared.showDiffableDataSources01(from: self)
   }
+
+  @IBAction func tapDD02(_: Any) {
+    Router.shared.showDiffableDataSources02(from: self)
+  }
 }

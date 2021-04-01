@@ -64,6 +64,11 @@ final class Router {
     let vc = R.storyboard.diffableDataSources01.diffableDataSources01ViewController()!
     show(from: from, to: vc)
   }
+
+  func showDiffableDataSources02(from: UIViewController) {
+    let vc = R.storyboard.diffableDataSources02.diffableDataSources02ViewController()!
+    show(from: from, to: vc)
+  }
 }
 
 private extension Router {

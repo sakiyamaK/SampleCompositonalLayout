@@ -5,7 +5,7 @@
 //  Created by sakiyamaK on 2021/03/21.
 //
 
-import Foundation
+import UIKit
 
 protocol SampleModel {
   var text: String { get }
@@ -67,5 +67,26 @@ struct SampleModel02: SampleModel, Hashable {
 
   static var smaple02ss: [[Self]] {
     [Self.createSamples(times: 5), Self.createSamples(times: 10), Self.createSamples(times: 20)]
+  }
+}
+
+struct SampleModel03: Hashable {
+  private(set) var color: UIColor
+  private(set) var id: Int
+
+  let identifier = UUID()
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(identifier)
+  }
+
+  static func == (lhs: Self, rhs: Self) -> Bool {
+    return lhs.identifier == rhs.identifier
+  }
+
+  static func createSamples(times: Int) -> [Self] {
+    Array(1 ... times).map { v -> Self in
+      let c = UIColor(hue: CGFloat(v) / CGFloat(times), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+      return Self(color: c, id: v)
+    }.shuffled()
   }
 }
