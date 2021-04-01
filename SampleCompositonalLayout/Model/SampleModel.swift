@@ -70,7 +70,7 @@ struct SampleModel02: SampleModel, Hashable {
   }
 }
 
-struct SampleModel03: Hashable {
+struct SampleModel03: Hashable, Comparable {
   private(set) var color: UIColor
   private(set) var id: Int
 
@@ -81,6 +81,10 @@ struct SampleModel03: Hashable {
 
   static func == (lhs: Self, rhs: Self) -> Bool {
     return lhs.identifier == rhs.identifier
+  }
+
+  static func < (lhs: Self, rhs: Self) -> Bool {
+    lhs.id < rhs.id
   }
 
   static func createSamples(times: Int) -> [Self] {

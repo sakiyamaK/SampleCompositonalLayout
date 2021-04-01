@@ -18,15 +18,23 @@ final class DiffableDataSources02ViewController: UIViewController {
     }
 
     private var identifier = UUID()
-    var isSorted: Bool {
-      currentSortIndex >= nodes.count - 1
-    }
+
+    var isSorted: Bool { nodes == nodes.sorted() }
 
     private(set) var nodes: [SampleModel03] = []
 
-    var currentSortIndex: Int = 1
     func create(times: Int) {
       nodes = SampleModel03.createSamples(times: times)
+    }
+
+    func sorted() -> [SampleModel03] {
+      for index in 0 ..< nodes.count - 1 {
+        let now = nodes[index]
+        let next = nodes[index + 1]
+        nodes[index] = max(now, next)
+        nodes[index + 1] = min(now, next)
+      }
+      return nodes
     }
   }
 
@@ -104,22 +112,10 @@ private extension DiffableDataSources02ViewController {
 
     updateSnapshot.sectionIdentifiers.forEach {
       let section = $0
-      var items = section.nodes
-
-      var index = section.currentSortIndex
-      let currentItem = items[index]
-      index -= 1
-      while index >= 0, currentItem.id < items[index].id {
-        let tmp = items[index]
-        items[index] = currentItem
-        items[index + 1] = tmp
-        index -= 1
-      }
-
-      section.currentSortIndex += 1
-
+      let items = section.nodes
+      let sorted = section.sorted()
       updateSnapshot.deleteItems(items)
-      updateSnapshot.appendItems(items, toSection: section)
+      updateSnapshot.appendItems(sorted, toSection: section)
     }
 
     dataSource.apply(updateSnapshot)
