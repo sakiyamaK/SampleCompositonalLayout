@@ -36,10 +36,11 @@ private extension CompositionalLayout03ViewController {
     // 余白
     leadingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
 
+    // 右側
     let trailingItem = NSCollectionLayoutItem(
-      // グループに対する比率
+      // グループに対する比率 NSCollectionLayoutGroupがsubitem指定だと関係ない
       layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                         heightDimension: .fractionalHeight(0.5))
+                                         heightDimension: .fractionalHeight(1.0))
     )
     // 余白
     trailingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)

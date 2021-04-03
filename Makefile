@@ -7,11 +7,19 @@ clean:
 	./script/clean.sh
 .PHONY: clean
 
-component:
+layout:
 ifdef name
-	mint run pui component MVC_COLLECTION ${name}
+	mint run pui component CompositionalLayout ${name}
 else
 	@echo "make component name=<component name>"
 endif
-.PHONY: component
+.PHONY: layout
+
+datasources:
+ifdef name
+	mint run pui component DiffableDataSources ${name}
+else
+	@echo "make component name=<component name>"
+endif
+.PHONY: layout
 

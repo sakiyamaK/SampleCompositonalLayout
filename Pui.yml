@@ -1,7 +1,12 @@
-MVC_COLLECTION:
+CompositionalLayout:
   Target: SampleCompositonalLayout
   TemplateDirectoryPath: ./templates/PuiTemplate/ios/MVC_COLLECTION
-  GenerateRootPath: ./SampleCompositonalLayout
+  GenerateRootPath: ./SampleCompositonalLayout/CompositionalLayout
+
+DiffableDataSources:
+  Target: SampleCompositonalLayout
+  TemplateDirectoryPath: ./templates/PuiTemplate/ios/MVC_COLLECTION
+  GenerateRootPath: ./SampleCompositonalLayout/DiffableDataSources
 
 MVC:
   Target: SampleCompositonalLayout

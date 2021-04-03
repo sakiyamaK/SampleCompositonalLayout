@@ -60,6 +60,16 @@ final class Router {
     show(from: from, to: vc)
   }
 
+  func showCompositionalLayout07(from: UIViewController) {
+    let vc = R.storyboard.compositionalLayout07.compositionalLayout07ViewController()!
+    show(from: from, to: vc)
+  }
+
+  func showCompositionalLayout08(from: UIViewController) {
+    let vc = R.storyboard.compositionalLayout08.compositionalLayout08ViewController()!
+    show(from: from, to: vc)
+  }
+
   func showDiffableDataSources01(from: UIViewController) {
     let vc = R.storyboard.diffableDataSources01.diffableDataSources01ViewController()!
     show(from: from, to: vc)

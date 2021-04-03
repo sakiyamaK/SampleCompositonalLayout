@@ -32,6 +32,14 @@ final class HomeViewController: UIViewController {
     Router.shared.showCompositionalLayout06(from: self)
   }
 
+  @IBAction func tapCL07(_: Any) {
+    Router.shared.showCompositionalLayout07(from: self)
+  }
+
+  @IBAction func tapCL08(_: Any) {
+    Router.shared.showCompositionalLayout08(from: self)
+  }
+
   @IBAction func tapDD01(_: Any) {
     Router.shared.showDiffableDataSources01(from: self)
   }
