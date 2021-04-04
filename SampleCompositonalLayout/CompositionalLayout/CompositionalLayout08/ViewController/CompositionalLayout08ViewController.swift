@@ -43,7 +43,7 @@ private extension CompositionalLayout08ViewController {
     collectionView.collectionViewLayout = layout
     collectionView.alpha = 0.0
     collectionView.reloadData()
-    UIView.animate(withDuration: 0.25, animations: {
+    UIView.animate(withDuration: 0.5, animations: {
       self.collectionView.alpha = 1.0
     })
   }
@@ -51,36 +51,37 @@ private extension CompositionalLayout08ViewController {
   var layout: UICollectionViewLayout {
     UICollectionViewCompositionalLayout { [unowned self] (section, environment) -> NSCollectionLayoutSection? in
 
-      let groupSize = NSCollectionLayoutSize(
+      let layoutSize = NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
         heightDimension: .estimated(environment.container.effectiveContentSize.height)
       )
 
-      let groupInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
-      let group = NSCollectionLayoutGroup.custom(layoutSize: groupSize) { [unowned self] (environment) -> [NSCollectionLayoutGroupCustomItem] in
-
-        var items: [NSCollectionLayoutGroupCustomItem] = []
-
-        var layouts: [Int: CGFloat] = [:]
+      let group = NSCollectionLayoutGroup.custom(layoutSize: layoutSize) { [unowned self] (environment) -> [NSCollectionLayoutGroupCustomItem] in
 
         let horizontalSpace: CGFloat = 8
         let verticalSpace: CGFloat = 8
         let numberOfColumn: CGFloat = self.segmentControll.selectedSegmentIndex == 0 ? 1.0 : 2.0
 
-        let defaultSize = CGSize(width: 100, height: 100)
+        // 各列の最後のitemのmaxYを保存
+        var layouts: [Int: CGFloat] = Dictionary(
+          uniqueKeysWithValues: (0 ..< Int(numberOfColumn)).map { ($0, 0) }
+        )
+
+        let width = (environment.container.effectiveContentSize.width - (numberOfColumn - 1) * horizontalSpace) / numberOfColumn
+
+        var items: [NSCollectionLayoutGroupCustomItem] = []
 
         for idx in 0 ..< self.collectionView.numberOfItems(inSection: section) {
-          let size = self.items[idx].image?.size ?? defaultSize
+          let size = self.items[idx].image?.size ?? .zero
           let aspect = CGFloat(size.height) / CGFloat(size.width)
-
-          let width = (environment.container.effectiveContentSize.width - (numberOfColumn - 1) * horizontalSpace) / numberOfColumn - (groupInsets.leading + groupInsets.trailing)
           let height = width * aspect
 
           let currentColumn = idx % Int(numberOfColumn)
-          let y = layouts[currentColumn] ?? 0.0 + verticalSpace
-          let x = width * CGFloat(currentColumn) + horizontalSpace * (CGFloat(currentColumn) + 1) + groupInsets.leading
+          let currentRow = idx / Int(numberOfColumn)
+          let y = environment.container.contentInsets.top + (layouts[currentColumn] ?? 0.0) + (currentRow == 0 ? 0.0 : verticalSpace)
+          let x = environment.container.contentInsets.leading + width * CGFloat(currentColumn) + horizontalSpace * CGFloat(currentColumn)
 
-          let frame = CGRect(x: x, y: y + verticalSpace, width: width, height: height)
+          let frame = CGRect(x: x, y: y, width: width, height: height)
           let item = NSCollectionLayoutGroupCustomItem(frame: frame)
           items.append(item)
 
@@ -88,9 +89,11 @@ private extension CompositionalLayout08ViewController {
         }
         return items
       }
-      group.contentInsets = groupInsets
-
-      return NSCollectionLayoutSection(group: group)
+      // なぜかtopとbottomが反応しない
+      group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 8)
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 8, leading: 0, bottom: 8, trailing: 0)
+      return section
     }
   }
 }
