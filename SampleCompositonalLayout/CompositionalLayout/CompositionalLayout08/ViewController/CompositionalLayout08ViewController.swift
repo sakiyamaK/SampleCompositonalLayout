@@ -63,7 +63,7 @@ private extension CompositionalLayout08ViewController {
         let numberOfColumn: CGFloat = self.segmentControll.selectedSegmentIndex == 0 ? 1.0 : 2.0
 
         // 各列の最後のitemのmaxYを保存
-        var layouts: [Int: CGFloat] = Dictionary(
+        var itemMaxYPerColumns: [Int: CGFloat] = Dictionary(
           uniqueKeysWithValues: (0 ..< Int(numberOfColumn)).map { ($0, 0) }
         )
 
@@ -78,20 +78,22 @@ private extension CompositionalLayout08ViewController {
 
           let currentColumn = idx % Int(numberOfColumn)
           let currentRow = idx / Int(numberOfColumn)
-          let y = environment.container.contentInsets.top + (layouts[currentColumn] ?? 0.0) + (currentRow == 0 ? 0.0 : verticalSpace)
+          let preItemMaxY = (itemMaxYPerColumns[currentColumn] ?? 0.0)
+          let y = preItemMaxY + (currentRow == 0 ? 0.0 : verticalSpace)
           let x = environment.container.contentInsets.leading + width * CGFloat(currentColumn) + horizontalSpace * CGFloat(currentColumn)
 
           let frame = CGRect(x: x, y: y, width: width, height: height)
           let item = NSCollectionLayoutGroupCustomItem(frame: frame)
           items.append(item)
 
-          layouts[currentColumn] = frame.maxY
+          itemMaxYPerColumns[currentColumn] = frame.maxY
         }
         return items
       }
       // なぜかtopとbottomが反応しない
       group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 8)
       let section = NSCollectionLayoutSection(group: group)
+      // groupのcontentInsetsのtopとbottomが反応しないのでsectionで対応
       section.contentInsets = .init(top: 8, leading: 0, bottom: 8, trailing: 0)
       return section
     }
