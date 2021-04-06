@@ -13,6 +13,7 @@ final class CompositionalLayout01ViewController: UIViewController {
 
   @IBOutlet private var collectionView: UICollectionView! {
     didSet {
+      // CompositionalLayoutで作ったlayoutを代入する
       collectionView.collectionViewLayout = layout
       collectionView.register(UINib(resource: R.nib.uiCollectionViewCell01), forCellWithReuseIdentifier: UICollectionViewCell01.reuseId)
       collectionView.backgroundColor = .systemGray

@@ -58,7 +58,9 @@ extension DiffableDataSources01ViewController {
   }
 
   func configureDataSource() {
+    // データソースを定義
     dataSource = UICollectionViewDiffableDataSource<Section, SampleModel02>(collectionView: collectionView) { (collectionView: UICollectionView, indexPath: IndexPath, sample: SampleModel02) -> UICollectionViewCell? in
+      // ここでこれまでDataSoucesプロトコルでやっていたセルの構築を行う
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell01.reuseId, for: indexPath) as! UICollectionViewCell01
       cell.configure(sample: sample)
       return cell
@@ -72,9 +74,13 @@ extension DiffableDataSources01ViewController {
         return model.text.contains(searchWord)
       }.sorted { $0.text < $1.text }
 
+    // 新しいsnapshotを用意する
     var snapshot = NSDiffableDataSourceSnapshot<Section, SampleModel02>()
+    // セクションの数を登録する
     snapshot.appendSections([.main])
+    // セルの配列を登録する
     snapshot.appendItems(samples)
+    // データソースにsnapshotを適応させる
     dataSource.apply(snapshot, animatingDifferences: true)
   }
 }

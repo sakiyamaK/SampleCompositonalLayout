@@ -26,17 +26,19 @@ final class CompositionalLayout02ViewController: UIViewController {
 
 private extension CompositionalLayout02ViewController {
   var layout: UICollectionViewLayout {
-    // アイテムの横幅をグループの0.2倍、高さを1倍にする
+    // アイテムの横幅を親の0.2倍、高さを1倍にする
     let itemSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(0.2),
       heightDimension: .fractionalHeight(1.0)
     )
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
+    // グループの横幅を親の1.0倍,高さを55にする
     let groupSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
-      heightDimension: .absolute(44)
+      heightDimension: .absolute(55.0)
     )
+    // 水平配置のグループを作成
     let group = NSCollectionLayoutGroup.horizontal(
       layoutSize: groupSize,
       subitems: [item]
@@ -46,8 +48,11 @@ private extension CompositionalLayout02ViewController {
     // グループの左右に10の余白を入れる
     group.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
 
+    // セクションを作成
     let section = NSCollectionLayoutSection(group: group)
+    // グループ間の余白を設定
     section.interGroupSpacing = 30
+    // sectionの上下に余白を設定
     section.contentInsets = .init(top: 20, leading: 0, bottom: 20, trailing: 0)
 
     /*
