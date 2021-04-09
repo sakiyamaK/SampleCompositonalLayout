@@ -14,7 +14,7 @@ final class DiffableDataSources02ViewController: UIViewController {
     }
 
     static func == (lhs: SortSection, rhs: SortSection) -> Bool {
-      return lhs.identifier == rhs.identifier
+      lhs.identifier == rhs.identifier
     }
 
     private var identifier = UUID()

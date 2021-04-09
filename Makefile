@@ -21,5 +21,13 @@ ifdef name
 else
 	@echo "make component name=<component name>"
 endif
-.PHONY: layout
+.PHONY: datasources
+
+example:
+ifdef name
+	mint run pui component Example ${name}
+else
+	@echo "make component name=<component name>"
+endif
+.PHONY: example
 

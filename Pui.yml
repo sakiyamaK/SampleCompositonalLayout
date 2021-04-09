@@ -8,6 +8,11 @@ DiffableDataSources:
   TemplateDirectoryPath: ./templates/PuiTemplate/ios/MVC_COLLECTION
   GenerateRootPath: ./SampleCompositonalLayout/DiffableDataSources
 
+Example:
+  Target: SampleCompositonalLayout
+  TemplateDirectoryPath: ./templates/PuiTemplate/ios/MVC_COLLECTION
+  GenerateRootPath: ./SampleCompositonalLayout/Example
+
 MVC:
   Target: SampleCompositonalLayout
   TemplateDirectoryPath: ./templates/PuiTemplate/ios/MVC

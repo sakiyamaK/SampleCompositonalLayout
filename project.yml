@@ -8,7 +8,7 @@ name: SampleCompositonalLayout
 options:
   bundleIdPrefix: com.sakiyamaK
   deploymentTarget:
-    iOS: 12.4
+    iOS: 13.0
 packages:
   IQKeyboardManagerSwift:
       url: https://github.com/hackiftekhar/IQKeyboardManager
@@ -25,6 +25,10 @@ packages:
   Kingfisher:
       url: https://github.com/onevcat/Kingfisher
       from: 6.2.1
+  Hero:
+      url: https://github.com/HeroTransitions/Hero
+      from: 1.6.1
+      
 configs:
   Debug: debug
   Release: release
