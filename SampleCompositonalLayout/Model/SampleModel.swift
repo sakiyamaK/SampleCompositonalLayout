@@ -114,22 +114,35 @@ struct SampleImageModel: Hashable {
       }
     }
   }
-  //  static var samples: [SampleImageModel] {
-  //    [
-  //      "https://img.game8.jp/4079512/124168df8992456d61a26ecb225c3131.jpeg/show",
-  //      "https://img.game8.jp/4079343/74803d79ea9ee6028db6f1872ac8b75b.jpeg/show",
-  //      "https://img.game8.jp/4079420/75fa8940344f1a320491bc4ab7cdadb5.jpeg/show",
-  //      "https://img.game8.jp/4079530/f1a3f42513907a1812a7f65b979983b7.jpeg/show",
-  //      "https://img.game8.jp/4079253/4e134697974a97018a41730c98829879.jpeg/show",
-  //      "https://img.game8.jp/4079455/4ebba56ad565f194527d3de90d200dcb.jpeg/show",
-  //      "https://img.game8.jp/4079262/ec485056ab19873218424c7551fd0c30.jpeg/show",
-  //      "https://img.game8.jp/4079203/29b15f6250d697575487be2efd8ea6d6.jpeg/show",
-  //      "https://img.game8.jp/4079320/28aa8b493fa517507f71e24fcf3aba2e.jpeg/show",
-  //      "https://img.game8.jp/4079279/f66aecaf66fbbbbe269f5fd15ed8f916.jpeg/show",
-  //      "https://img.game8.jp/4079542/b912e352c4f15f94040ebd7e1187fa25.jpeg/show",
-  //      "https://img.game8.jp/4079361/ece62634e95b029f0b362b2135874994.jpeg/show",
-  //      "https://img.game8.jp/4079615/75fac4eaaaae9663274d54b6ed156f53.jpeg/show",
-  //      "https://img.game8.jp/4079475/5d58f5fc297b3fe9ed1cde57708dbdf4.jpeg/show"
-  //    ].shuffled().map { SampleImageModel(text: $0) }
-  //  }
+}
+
+struct SampleImageModel2: Hashable {
+  var image: UIImage?
+  var subImage: UIImage?
+
+  static func load(times: Int = 10, completion: (([Self]) -> Void)? = nil) {
+    var rtn: [Self] = []
+    (1 ... times).forEach { _ in
+      let mainURL = URL(string: "https://picsum.photos/200/300?\(UUID().description)")!
+      KingfisherManager.shared.retrieveImage(with: mainURL) { mainResult in
+        switch mainResult {
+        case let .success(mainSuccess):
+          let subURL = URL(string: "https://picsum.photos/50/50?\(UUID().description)")!
+          KingfisherManager.shared.retrieveImage(with: subURL) { subResult in
+            switch subResult {
+            case let .success(subSuccess):
+              rtn.append(Self(image: mainSuccess.image, subImage: subSuccess.image))
+              if rtn.count == times {
+                completion?(rtn)
+              }
+            case .failure:
+              fatalError()
+            }
+          }
+        case .failure:
+          fatalError()
+        }
+      }
+    }
+  }
 }

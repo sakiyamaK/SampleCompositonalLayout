@@ -13,8 +13,9 @@ extension Router {
     show(from: from, to: vc)
   }
 
-  func showAppStoreDetail(from: UIViewController) {
-    let vc = R.storyboard.appStoreDetail.appStoreDetailViewController()!
-    show(from: from, to: vc)
+  func showAppStoreDetail(from: UIViewController, sampleModel: SampleImageModel2, heroId: String?) {
+    let vc = AppStoreDetailViewController.makeFromStoryboard(sampleModel: sampleModel, heroId: heroId)
+    vc.modalPresentationStyle = .fullScreen
+    show(from: from, to: vc, isPresent: true)
   }
 }

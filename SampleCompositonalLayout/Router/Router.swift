@@ -5,7 +5,6 @@
 //  Created by sakiyamaK on 2021/01/16.
 //
 
-import Hero
 import UIKit
 
 /**
@@ -83,8 +82,8 @@ final class Router {
 }
 
 extension Router {
-  func show(from: UIViewController, to: UIViewController) {
-    if let nav = from.navigationController {
+  func show(from: UIViewController, to: UIViewController, isPresent: Bool = false) {
+    if !isPresent, let nav = from.navigationController {
       nav.pushViewController(to, animated: true)
     } else {
       from.present(to, animated: true, completion: nil)
